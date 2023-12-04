@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationMessages } from "../../../../common/validation.messages"
 import { AddNewSynonymModel } from '../../models/AddNewSynonymModel';
 import { SynonymService } from '../../../../services/synonym/synonym.service';
-import { firstValueFrom } from 'rxjs';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-add-synonym',
@@ -15,7 +15,10 @@ export class AddSynonymComponent {
   validation_messages = ValidationMessages.synonymForm;
   synonymForm!: FormGroup;
 
-  constructor(private _synonymService: SynonymService, private fb: FormBuilder) {
+  constructor(
+      private _synonymService: SynonymService, 
+      private fb: FormBuilder,
+      private notification: NzNotificationService) {
     this.synonymForm = this.fb.group({
       synonymFrom: [null, Validators.compose([
         Validators.required,
@@ -28,11 +31,12 @@ export class AddSynonymComponent {
 
   async submitForm() {
     let model = new AddNewSynonymModel({ synonymFrom: this.synonymForm.value.synonymFrom, synonymTo: this.synonymForm.value.synonymTo });
-    let addNewCall = this._synonymService.addNew(model);
-    await firstValueFrom(addNewCall)
-    .then((value) => {
-      console.log(`Result: ` + value);
-    });
+    await this._synonymService.addNew(model);
+    this.notification.create(
+      'success',
+      'Synonym added',
+      'Synonym from ' + model.synonymFrom + ' to ' + model.synonymTo + ' added!'
+    );
   }
 
 }

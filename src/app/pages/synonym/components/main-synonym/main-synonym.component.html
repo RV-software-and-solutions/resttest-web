@@ -1,1 +1,38 @@
-<p>main-synonym works!</p>
+<nz-spin [nzSpinning]="actionRunning" nzTip="Loading...">
+    <div class="space-align-container">
+        <div nz-space nzAlign="start" class="space-align-block">
+            <button nz-button nzType="primary" nzShape="round" (click)="onLoadGraphState()">
+                <span nz-icon nzType="download"></span>
+                Load graph state
+            </button>
+        </div>
+
+        <div nz-space nzAlign="center" class="space-align-block">
+            <button nz-button nzType="primary" nzShape="round" (click)="onSaveGraphState()">
+                <span nz-icon nzType="download"></span>
+                Save graph state
+            </button>
+        </div>
+
+        <div nz-space nzAlign="start" class="space-align-block">
+            <button nz-button nzType="primary" nzShape="round" (click)="onResetGraphState()">
+                <span nz-icon nzType="download"></span>
+                Reset graph state
+            </button>
+        </div>
+    </div>
+</nz-spin>
+
+<nz-result *ngIf="graphStateLoaded" nzStatus="success" nzTitle="Graph state loaded cuccessfully!"
+    nzSubTitle="You have the new graph state loaded into the memory from DynamoDb.">
+</nz-result>
+
+<nz-result *ngIf="graphStateSaved" nzStatus="success" nzTitle="Successfully graph state saved!"
+    nzSubTitle="You have the new graph state saved in the DynamoDb.">
+</nz-result>
+
+<nz-result *ngIf="graphStateCleared" nzStatus="warning" nzTitle="Graph state cleared">
+    <div nz-result-extra>
+        <button nz-button nzType="primary">Go Console</button>
+    </div>
+</nz-result>

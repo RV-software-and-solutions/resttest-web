@@ -8,6 +8,7 @@ const moduleName: string = "synonym";
 
 const routes: Routes = [
   { path: '', component: MainSynonymComponent },
+  { path: 'graph-actions', component: MainSynonymComponent },
   { path: 'add', component: AddSynonymComponent },
   { path: 'find', component: FindSynonymComponent },
 ];

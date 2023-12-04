@@ -2,7 +2,7 @@
     <nz-form-item>
         <nz-form-control>
             <nz-input-group nzPrefixIcon="caret-right">
-                <input formControlName="synonymFrom" nz-input placeholder="From" formControlName="synonymFrom" />
+                <input formControlName="synonymFrom" nz-input placeholder="From"  />
             </nz-input-group>
             <div *ngFor="let validation of validation_messages.synonymFrom">
                 <p *ngIf="synonymForm.get('synonymFrom')?.hasError(validation.type) && (synonymForm.get('synonymFrom')?.dirty || synonymForm.get('synonymFrom')?.touched)">{{validation.message}}</p>
