@@ -1,0 +1,27 @@
+<form nz-form [nzLayout]="'inline'" [formGroup]="synonymForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-control>
+            <nz-input-group nzPrefixIcon="caret-right">
+                <input formControlName="synonymFrom" nz-input placeholder="From" formControlName="synonymFrom" />
+            </nz-input-group>
+            <div *ngFor="let validation of validation_messages.synonymFrom">
+                <p *ngIf="synonymForm.get('synonymFrom')?.hasError(validation.type) && (synonymForm.get('synonymFrom')?.dirty || synonymForm.get('synonymFrom')?.touched)">{{validation.message}}</p>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <nz-input-group nzPrefixIcon="caret-right">
+                <input formControlName="synonymTo" nz-input placeholder="To" />
+            </nz-input-group>
+            <div *ngFor="let validation of validation_messages.synonymTo">
+                <p *ngIf="synonymForm.get('synonymTo')?.hasError(validation.type) && (synonymForm.get('synonymTo')?.dirty || synonymForm.get('synonymTo')?.touched)">{{validation.message}}</p>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <button nz-button nzType="primary" [disabled]="!synonymForm.valid">Save synonym</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>
