@@ -1,7 +1,7 @@
-export class FindSynonymModel {
+export class FindSynonymRequest {
     synonymFrom: string;
   
-    constructor(model: FindSynonymModel) {
+    constructor(model: FindSynonymRequest) {
       this.synonymFrom = model?.synonymFrom;
     }
   }

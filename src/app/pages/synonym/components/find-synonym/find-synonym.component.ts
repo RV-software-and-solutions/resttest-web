@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationMessages } from "../../../../common/validation.messages"
-import { FindSynonymModel } from '../../models/FindSynonymModel';
 import { SynonymService } from '../../../../services/synonym/synonym.service';
-import { FindSynonymResponse } from '../../models/Reponse/FindSynonymResponse';
+import { FindSynonymResponse } from '../../../../models/synonym/Reponse/FindSynonymResponse';
+import { FindSynonymRequest } from '../../../../models/synonym/Request/FindSynonymRequest';
 
 @Component({
   selector: 'app-find-synonym',
@@ -27,7 +27,7 @@ export class FindSynonymComponent {
   }
 
   async submitForm() {
-    let model = new FindSynonymModel({ synonymFrom: this.synonymForm.value.synonymFrom });
+    let model = new FindSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom });
     this.foundSynonyms = await this._synonymService.findSynonyms(model);
     this.synonymLoaded = true;
   }

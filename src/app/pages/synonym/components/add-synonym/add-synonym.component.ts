@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationMessages } from "../../../../common/validation.messages"
-import { AddNewSynonymModel } from '../../models/AddNewSynonymModel';
 import { SynonymService } from '../../../../services/synonym/synonym.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { AddNewSynonymRequest } from '../../../../models/synonym/Request/AddNewSynonymRequest';
 
 @Component({
   selector: 'app-add-synonym',
@@ -30,7 +30,7 @@ export class AddSynonymComponent {
   }
 
   async submitForm() {
-    let model = new AddNewSynonymModel({ synonymFrom: this.synonymForm.value.synonymFrom, synonymTo: this.synonymForm.value.synonymTo });
+    let model = new AddNewSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom, synonymTo: this.synonymForm.value.synonymTo });
     await this._synonymService.addNew(model);
     this.notification.create(
       'success',

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AddNewSynonymModel } from '../../pages/synonym/models/AddNewSynonymModel';
 import { HttpClient } from "@angular/common/http";
 import { Globals } from '../../common/globals';
-import { FindSynonymModel } from '../../pages/synonym/models/FindSynonymModel';
 import { firstValueFrom } from 'rxjs';
-import { FindSynonymResponse } from '../../pages/synonym/models/Reponse/FindSynonymResponse';
+import { AddNewSynonymRequest } from '../../models/synonym/Request/AddNewSynonymRequest';
+import { FindSynonymRequest } from '../../models/synonym/Request/FindSynonymRequest';
+import { FindSynonymResponse } from '../../models/synonym/Reponse/FindSynonymResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,11 @@ export class SynonymService {
 
   constructor(private _myGlobals: Globals, private _http: HttpClient) { }
 
-  async addNew(newSynonym: AddNewSynonymModel): Promise<void> {
+  async addNew(newSynonym: AddNewSynonymRequest): Promise<void> {
     return await firstValueFrom(this._http.post<void>(this._synonymUrl, newSynonym));
   }
 
-  async findSynonyms(synoym: FindSynonymModel): Promise<FindSynonymResponse> {
+  async findSynonyms(synoym: FindSynonymRequest): Promise<FindSynonymResponse> {
     return await firstValueFrom(this._http.get<FindSynonymResponse>(this._synonymUrl + "?fromSynonym=" + synoym.synonymFrom));
   }
 
