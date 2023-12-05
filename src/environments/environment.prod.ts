@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'https://rvstask.azurewebsites.net/'
+  api_url: 'https://api-ratomir-task.rvs.cloudns.biz/'
 };
