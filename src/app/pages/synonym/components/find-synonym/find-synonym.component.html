@@ -21,7 +21,7 @@
 
 <div style="background: #ECECEC;padding:30px;" *ngIf="synonymLoaded">
     <div nz-row [nzGutter]="3">
-        <div nz-col [nzSpan]="12">
+        <div nz-col [nzSpan]="12" class="loaded-synonyms">
             <nz-card nzTitle="Synonyms of {{foundSynonyms.fromSynonym}}">
                 <p *ngFor="let synonym of foundSynonyms.synonyms">{{synonym}}</p>
             </nz-card>
