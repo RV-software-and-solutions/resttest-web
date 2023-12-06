@@ -4,8 +4,6 @@ import { AddSynonymComponent } from './components/add-synonym/add-synonym.compon
 import { FindSynonymComponent } from './components/find-synonym/find-synonym.component';
 import { MainSynonymComponent } from './components/main-synonym/main-synonym.component';
 
-const moduleName: string = "synonym";
-
 const routes: Routes = [
   { path: '', component: MainSynonymComponent },
   { path: 'graph-actions', component: MainSynonymComponent },

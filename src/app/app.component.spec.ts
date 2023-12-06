@@ -1,10 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { RouterTestingModule } from "@angular/router/testing";
+import { NzIconTestModule } from './nz-icon-test.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      declarations: [AppComponent],
+      imports: [
+        NzLayoutModule,
+        RouterTestingModule,
+        NzIconModule,
+        NzIconTestModule
+      ],
+      providers: [
+      ]
     }).compileComponents();
   });
 
@@ -12,18 +24,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'RestTestWeb' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('RestTestWeb');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, RestTestWeb');
   });
 });

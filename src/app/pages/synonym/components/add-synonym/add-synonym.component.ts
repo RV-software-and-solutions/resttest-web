@@ -30,7 +30,7 @@ export class AddSynonymComponent {
   }
 
   async submitForm() {
-    let model = new AddNewSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom, synonymTo: this.synonymForm.value.synonymTo });
+    const model = new AddNewSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom, synonymTo: this.synonymForm.value.synonymTo });
     await this._synonymService.addNew(model);
     this.notification.create(
       'success',

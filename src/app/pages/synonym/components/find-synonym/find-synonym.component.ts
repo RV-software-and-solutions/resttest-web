@@ -27,7 +27,7 @@ export class FindSynonymComponent {
   }
 
   async submitForm() {
-    let model = new FindSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom });
+    const model = new FindSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom });
     this.foundSynonyms = await this._synonymService.findSynonyms(model);
     this.synonymLoaded = true;
   }
