@@ -10,8 +10,11 @@ import { NzIconTestModule } from '../../../../nz-icon-test.module';
 describe('MainSynonymComponent', () => {
   let component: MainSynonymComponent;
   let fixture: ComponentFixture<MainSynonymComponent>;
+  let mockSynonymService: jasmine.SpyObj<SynonymService>;
 
   beforeEach(async () => {
+    mockSynonymService = jasmine.createSpyObj('SynonymService', ['loadGraphState', 'saveGraphState', 'resetGraphState']);
+
     await TestBed.configureTestingModule({
       declarations: [MainSynonymComponent],
       imports: [
@@ -19,7 +22,7 @@ describe('MainSynonymComponent', () => {
         NzSpinModule,
         NzIconTestModule,
       ],
-      providers: [Globals, SynonymService]
+      providers: [Globals, { provide: SynonymService, useValue: mockSynonymService }]
     })
       .compileComponents();
 
@@ -30,5 +33,33 @@ describe('MainSynonymComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call loadGraphState and update states correctly', async () => {
+    await component.onLoadGraphState();
+    expect(mockSynonymService.loadGraphState).toHaveBeenCalled();
+    expect(component.graphStateLoaded).toBeTrue();
+    expect(component.actionRunning).toBeFalse();
+  });
+
+  it('should call saveGraphState and update states correctly', async () => {
+    await component.onSaveGraphState();
+    expect(mockSynonymService.saveGraphState).toHaveBeenCalled();
+    expect(component.graphStateSaved).toBeTrue();
+    expect(component.actionRunning).toBeFalse();
+  });
+
+  it('should call resetGraphState and update states correctly', async () => {
+    await component.onResetGraphState();
+    expect(mockSynonymService.resetGraphState).toHaveBeenCalled();
+    expect(component.graphStateCleared).toBeTrue();
+    expect(component.actionRunning).toBeFalse();
+  });
+
+  it('should reset all states correctly', () => {
+    component.resetStates();
+    expect(component.graphStateLoaded).toBeFalse();
+    expect(component.graphStateSaved).toBeFalse();
+    expect(component.graphStateCleared).toBeFalse();
   });
 });

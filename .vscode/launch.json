@@ -3,6 +3,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug Jasmine Tests",
+    "type": "node",
+    "request": "attach",
+    "port": 9229,
+    "continueOnAttach": true,
+    "autoAttachChildProcesses": false,
+    "skipFiles": [
+      "<node_internals>/**"
+  ]
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

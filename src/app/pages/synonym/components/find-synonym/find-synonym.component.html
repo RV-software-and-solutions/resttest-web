@@ -6,23 +6,25 @@
                 <input formControlName="synonymFrom" nz-input />
             </nz-input-group>
             <div *ngFor="let validation of validation_messages.synonymFrom">
-                <p *ngIf="synonymForm.get('synonymFrom')?.hasError(validation.type) && (synonymForm.get('synonymFrom')?.dirty || synonymForm.get('synonymFrom')?.touched)">{{validation.message}}</p>
+                <p
+                    *ngIf="synonymForm.get('synonymFrom')?.hasError(validation.type) && (synonymForm.get('synonymFrom')?.dirty || synonymForm.get('synonymFrom')?.touched)">
+                    {{validation.message}}</p>
             </div>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-row class="register-area">
         <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary"  [disabled]="!synonymForm.valid">Find synonyms</button>
+            <button nz-button nzType="primary" [disabled]="!synonymForm.valid">Find synonyms</button>
         </nz-form-control>
     </nz-form-item>
 </form>
 
 <div style="background: #ECECEC;padding:30px;" *ngIf="synonymLoaded">
     <div nz-row [nzGutter]="3">
-      <div nz-col [nzSpan]="12">
-        <nz-card nzTitle="Synonyms of {{foundSynonyms.fromSynonym}}">
-          <p *ngFor="let synonym of foundSynonyms.synonyms">{{synonym}}</p>
-        </nz-card>
-      </div>
+        <div nz-col [nzSpan]="12">
+            <nz-card nzTitle="Synonyms of {{foundSynonyms.fromSynonym}}">
+                <p *ngFor="let synonym of foundSynonyms.synonyms">{{synonym}}</p>
+            </nz-card>
+        </div>
     </div>
-  </div>
+</div>
