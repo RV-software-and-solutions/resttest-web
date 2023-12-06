@@ -31,12 +31,20 @@ export class AddSynonymComponent {
 
   async submitForm() {
     const model = new AddNewSynonymRequest({ synonymFrom: this.synonymForm.value.synonymFrom, synonymTo: this.synonymForm.value.synonymTo });
-    await this._synonymService.addNew(model);
-    this.notification.create(
-      'success',
-      'Synonym added',
-      'Synonym from ' + model.synonymFrom + ' to ' + model.synonymTo + ' added!'
-    );
+    try {
+      await this._synonymService.addNew(model);
+      this.notification.create(
+        'success',
+        'Synonym added',
+        'Synonym from ' + model.synonymFrom + ' to ' + model.synonymTo + ' added!'
+      );
+    } catch (error) {
+      this.notification.create(
+        'error',
+        'Action failed',
+        'Add synonym action failed. Message - ' + error + '!'
+      );
+    }
   }
 
 }

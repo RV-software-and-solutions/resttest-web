@@ -64,6 +64,20 @@ describe('AddSynonymComponent', () => {
         'Synonym from testFrom to testTo added!'
       );
     });
+
+    it('should display an error notification when addNew throws an error', async () => {
+      const error = new Error('Test Error');
+      mockSynonymService.addNew.and.throwError(error);
+  
+      component.synonymForm.setValue({ synonymFrom: 'testFrom', synonymTo: 'testTo' });
+      await component.submitForm();
+  
+      expect(mockNotificationService.create).toHaveBeenCalledWith(
+        'error',
+        'Action failed',
+        'Add synonym action failed. Message - Error: Test Error!'
+      );
+    });
   });
 
   it('should create', () => {
