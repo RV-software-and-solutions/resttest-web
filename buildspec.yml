@@ -9,7 +9,7 @@ env:
 phases:
   install:
     commands:
-      - /usr/local/bin/dotnet-install.sh --channel STS
+      #- /usr/local/bin/node-install.sh --channel STS
 
   pre_build:
     commands:
