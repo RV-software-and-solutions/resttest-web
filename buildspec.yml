@@ -15,7 +15,7 @@ phases:
   pre_build:
     commands:
       - apt-get -y update
-      - apt-get install libcurl4
+      - apt-get install -y libcurl4
       - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
       - dpkg -i google-chrome-stable_current_amd64.deb
       - apt-get install -f
