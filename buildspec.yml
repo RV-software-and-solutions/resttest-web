@@ -14,6 +14,7 @@ phases:
   pre_build:
     commands:
       - npm install
+      - export CHROME_BIN=~/.local/share/flatpak/app/com.google.Chrome/current/active/export/bin/com.google.Chrome
       - npm run 'test:prod'
       - npm run lint
   
