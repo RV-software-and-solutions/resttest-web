@@ -18,7 +18,7 @@ phases:
       - apt-get -y update
       - apt-get -y install google-chrome-stable
       - npm install
-      - npm run 'test:prod'
+      - npm run test:prod --no-sandbox
       - npm run lint
   
   build:
