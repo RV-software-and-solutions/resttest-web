@@ -18,7 +18,6 @@ phases:
       - apt-get -y update
       - apt-get -y install google-chrome-stable
       - npm install
-      - export CHROME_BIN=~/.local/share/flatpak/app/com.google.Chrome/current/active/export/bin/com.google.Chrome
       - npm run 'test:prod'
       - npm run lint
   
