@@ -17,7 +17,7 @@ phases:
       - apt-get -y update
       - apt-get install -y libcurl4
       - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - dpkg -i google-chrome-stable_current_amd64.deb
+      - dpkg -i --force-depends google-chrome-stable_current_amd64.deb
       - apt-get install -f
       - npm install
       - npm run test:prod 
