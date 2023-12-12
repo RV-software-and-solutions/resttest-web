@@ -14,7 +14,7 @@ phases:
   pre_build:
     commands:
       - npm install
-      - npm run test --prod
+      - npm run 'test:prod'
       - npm run lint
   
   build:
