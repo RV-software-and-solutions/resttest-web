@@ -31,7 +31,7 @@ phases:
       - echo "Running build"
       - npm run build --prod
       - pwd
-      - ls -la dist
+      - ls -la dist/rest-test-web
       
   post_build: 
     commands:
