@@ -37,4 +37,5 @@ phases:
     commands:
       - echo "Sync with s3"
       - aws s3 sync /dist/rest-test/browser s3://w8-rest-test
+      
 
