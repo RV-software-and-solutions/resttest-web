@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -35,10 +37,10 @@ module.exports = function (config) {
     autoWatch: true,
     singleRun: true,
     restartOnFileChange: true,
-    browsers: ['Chrome_no_sandbox'],
+    browsers: ['ChromeHeadless'],
     customLaunchers: {
-      Chrome_no_sandbox: {
-        base: 'ChromiumHeadless',
+      ChromeHeadless: {
+        base: 'ChromeHeadless',
         flags: [
           '--no-sandbox',
           '--disable-gpu',
