@@ -34,7 +34,7 @@ jobs:
         continue-on-error: true
 
       - name: Build
-        run: npm run build --prod
+        run: npm run build:production
           
       - name: Build And Deploy
         id: builddeploy
