@@ -2,10 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false,
-  api_url: 'https://localhost:7232/'
-};
+import { commonEnv } from "./environment.common";
+
+const env: Partial<typeof commonEnv> = {};
+
+export const environment = { ...commonEnv, ...env };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
